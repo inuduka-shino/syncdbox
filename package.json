@@ -1,0 +1,18 @@
+{
+  "name": "sync-db",
+  "version": "1.0.0",
+  "description": "sync and zip to dropbox",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "dropbox"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "JSONStream": "^1.1.4",
+    "opts": "^1.2.2"
+  }
+}
