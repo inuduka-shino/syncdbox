@@ -19,8 +19,20 @@
     ],
     true // for  Automatically generate help message
   );
-  const mode = opts.args()[0];
+  const mode = (() => {
+    const mode = opts.args()[0];
+    if (mode === undefined) {
+      throw new Error('subcommand is none.');
+    } else if (mode === 'push') {
+      return 'push';
+    } else if (mode === 'push'){
+      return 'pull';
+    } else {
+      throw new Error(`unkown subcommand: ${mode}.`);
+    }
+  })();
 
   console.log(mode);
   console.log('end');
+
 }());
