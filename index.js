@@ -2,7 +2,7 @@
 'use strict';
 
 (function () {
-  const commandArgs = require('./lib/commandArgs.js');
+  const commandArgs = require('./lib/commandArgs');
   console.log('start');
 
   console.log(commandArgs.mode);
