@@ -1,18 +1,34 @@
 /*eslint no-console: 0 */
 'use strict';
 
-(function () {
-  const commandArgs = require('./lib/commandArgs');
-  console.log('start');
+const
+  co = require('co'),
+  commandArgs = require('./lib/commandArgs'),
+  mError = require('./lib/localError'),
+  config = require('./config'),
+  push = require('./lib/push.js'),
+  pull = require('./lib/pull.js');
 
-  console.log(commandArgs.mode);
-  if (commandArgs.mode === 'push') {
-    require('./lib/push.js').start();
-  } else if (commandArgs.mode === 'pull') {
-    require('./lib/pull.js').start();
+const x = new  mError.Error('test');
+console.log(mError.isError(x));
+
+co(function *(resolve, reject) {
+  console.log('start');
+  const args = commandArgs.parse();
+  if (args.mode === 'push') {
+    push.start(config);
+  } else if (args.mode === 'pull') {
+    pull.start(config);
   } else {
-    throw new Error(`unkown subcommand ${commandArgs.mode}`);
+    reject(new mError.Error(`unkown subcommand ${args.mode}.`));
   }
   console.log('end');
 
-}());
+}).catch((err) => {
+  if (mError.isError(err)){
+    console.log(`ERROR!:${err.message}`);
+  } else {
+    console.log(`unkown ERROR!${err.type?':' + err.type:''}(${err.message}`);
+    console.log(err.stack);
+  }
+});
