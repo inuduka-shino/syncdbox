@@ -18,6 +18,9 @@ co(function *() {
   } else if (args.mode === 'pull') {
     const pull = require('./lib/pull.js');
     yield pull.start(config);
+  } else if (args.mode === 'test') {
+    const pull = require('./lib/push.js');
+    yield pull.test(config);
   } else {
     throw new mError.Error(`unkown subcommand ${args.mode}.`);
   }
