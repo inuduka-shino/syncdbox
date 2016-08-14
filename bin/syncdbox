@@ -1,7 +1,7 @@
 #!/usr/bin/env node
+'use strict';
 
 (function () {
-  'use strict';
   const basePath = '/c/Users/maskinkk/scripts/sync-db/';
   require(basePath + 'main.js');
 }());
