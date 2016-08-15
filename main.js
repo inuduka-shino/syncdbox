@@ -4,7 +4,8 @@
 const
   co = require('co'),
   commandArgs = require('./lib/commandArgs'),
-  mError = require('./lib/localError');
+  mError = require('./lib/localError'),
+  subcmd = require('./lib/subcmd.js');
 
 co(function *() {
   console.log('start');
@@ -13,14 +14,11 @@ co(function *() {
   const args = commandArgs.parse();
 
   if (args.mode === 'push') {
-    const push = require('./lib/push.js');
-    yield push.start(config);
+    yield subcmd.startPush(config);
   } else if (args.mode === 'pull') {
-    const pull = require('./lib/pull.js');
-    yield pull.start(config);
+    yield subcmd.startPull(config);
   } else if (args.mode === 'test') {
-    const pull = require('./lib/push.js');
-    yield pull.test(config);
+    yield subcmd.startTest(config);
   } else {
     throw new mError.Error(`unkown subcommand ${args.mode}.`);
   }

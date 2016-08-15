@@ -1,4 +1,4 @@
-# ローカルファイルを圧縮してdropbox ファイルとsyncする
+# ローカルファイルを暗号化してdropbox ファイルとsyncする
 
 ## pushとpull
 
