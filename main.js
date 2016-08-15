@@ -1,5 +1,6 @@
 /*eslint no-console: 0 */
-'use strict';
+(function () {
+  'use strict';
 
 const
   co = require('co'),
