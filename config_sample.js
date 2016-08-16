@@ -2,6 +2,7 @@
 
 module.exports = {
   shelterFolderPath:'xxxx',
+  localShelterFolderPath:'xxxx',
   packages:[
     {
       packageName: 'TEST',
